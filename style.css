@@ -1,0 +1,124 @@
+/* ==== Style général ==== */
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #fce5cd; /* couleur Terre par défaut */
+  overflow-x: hidden; /* éviter scroll horizontal à cause des images flottantes */
+  transition: background-color 1s ease;
+
+  /* Curseur cookie personnalisé */
+  cursor: url('https://i.imgur.com/Oy5G6Zx.png') 10 10, auto;
+}
+
+/* Fond selon score */
+body.earth {
+  background-color: #fce5cd; /* Terre */
+}
+
+body.space {
+  background-color: #001028; /* Espace sombre */
+  color: #eee;
+}
+
+body.mars {
+  background-color: #b7410e; /* Mars rouge */
+  color: #fff;
+}
+
+/* ==== Titre ==== */
+h1 {
+  margin-top: 50px;
+  color: #5c4033;
+  user-select: none;
+}
+
+/* ==== Score ==== */
+#score {
+  font-size: 2em;
+  margin: 20px 0;
+  color: #a0522d;
+  user-select: none;
+}
+
+/* ==== Conteneur et cookie ==== */
+#cookie-container {
+  position: relative;
+  display: inline-block;
+
+  /* Curseur cookie personnalisé */
+  cursor: url('cursor1.png') 10 10, auto;
+}
+
+#cookie {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  user-select: none;
+
+  /* Curseur cookie personnalisé */
+  cursor: url('cursor2.png') 10 10, auto;
+}
+
+#cookie:active {
+  transform: scale(0.95);
+}
+
+/* ==== Mini cookies animés ==== */
+.mini-cookie {
+  position: absolute;
+  width: 30px;
+  pointer-events: none;
+  user-select: none;
+  animation: pop-up 0.8s ease-out forwards;
+  z-index: 10;
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      calc(-50px + 100px * var(--random, 0.5)), 
+      -150px
+    ) scale(0.5);
+  }
+}
+
+/* ==== Images flottantes ==== */
+.floating-image {
+  position: fixed;
+  width: 50px;
+  pointer-events: none;
+  user-select: none;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  z-index: 1000;
+  opacity: 0.8;
+}
+
+@keyframes floatRightToLeft {
+  from {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+}
+
+@keyframes floatLeftToRight {
+  from {
+    transform: translateX(-60px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
